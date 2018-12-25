@@ -18,5 +18,23 @@ describe('App Component', () => {
     counterWrapper = wrapper.find(Counter);
     expect(counterWrapper.props().counter).to.equal(-1);
   });
+
+  it('increments the counter', () => {
+    const wrapper = shallow(<App />);
+
+    wrapper.setState({ counter: 0 });
+    wrapper.find('button').at(0).simulate('click');
+
+    expect(wrapper.state().counter).to.equal(1);
+  });
+
+  it('decrements the counter', () => {
+    const wrapper = shallow(<App />);
+
+    wrapper.setState({ counter: 0 });
+    wrapper.find('button').at(1).simulate('click');
+
+    expect(wrapper.state().counter).to.equal(-1);
+  });
 });
 
